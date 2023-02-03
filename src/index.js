@@ -47,3 +47,5 @@ function decode(morseCode) {
           ).join('')
       ).join(' ');
   }
+  
+  console.log(decoded = decode("... --- ..."));
