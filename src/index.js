@@ -48,4 +48,6 @@ function decode(morseCode) {
       ).join(' ');
   }
   
-  console.log(decoded = decode("... --- ..."));
+module.exports = {
+    decode
+  }
