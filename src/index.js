@@ -38,17 +38,17 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-    let decoded = "";
-    let words = expr.split("**********");
-    for (let word of words) {
-        let letters = word.match(/.{1,10}/g);
-        for (let letter of letters) {
-            let decodedLetter = MORSE_TABLE[letter.replace(/0/g, ".").replace(/1/g, "-")];
-            decoded += decodedLetter;
+    const morseCodeArray = expr.split('**********');
+    let decodedMessage = '';
+    for (const morseCode of morseCodeArray) {
+        const letter = MORSE_TABLE[morseCode.replace(/0/g, '')];
+        if (letter) {
+            decodedMessage += letter;
+        } else {
+            decodedMessage += ' ';
         }
-        decoded += " ";
     }
-    return decoded.trim();
+    return decodedMessage;
 }
 
 module.exports = {
