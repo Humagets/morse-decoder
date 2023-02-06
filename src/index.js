@@ -38,24 +38,17 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-    let words = expr.split('**********');
-    let result = '';
-
+    let decoded = "";
+    let words = expr.split("**********");
     for (let word of words) {
         let letters = word.match(/.{1,10}/g);
-
         for (let letter of letters) {
-            let code = '';
-            for (let char of letter) {
-                code += char === '0' ? '.' : '-';
-            }
-            result += MORSE_TABLE[code];
+            let decodedLetter = MORSE_TABLE[letter.replace(/0/g, ".").replace(/1/g, "-")];
+            decoded += decodedLetter;
         }
-
-        result += ' ';
+        decoded += " ";
     }
-
-    return result.trim();
+    return decoded.trim();
 }
 
 module.exports = {
